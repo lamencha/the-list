@@ -38,10 +38,11 @@ export class TodosComponent {
     this.todos1.push({
       content: this.inputTodo,
       completed: false
+      
     });
-  
-    this.inputTodo = "";
+    
   }
+
 }
 
 
