@@ -16,7 +16,7 @@
             ng-pattern="example.inputTodo"
             required
         >
-        <small *ngIf="taskForm.invalid && taskForm.dirty" id="errorMessage" class="form-text text-danger">Filed Is Blank..</small>
+        <small *ngIf="taskForm.invalid && taskForm.dirty" id="errorMessage" class="form-text text-danger">Filed Is Blank.</small>
         <input  [disabled]="taskForm.invalid" class="todo-submit" type="submit" id="submit" value="ADD"  required>
     </form>  
   
