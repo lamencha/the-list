@@ -13,11 +13,11 @@ export class TodosComponent {
 
   todos1 = [
     {
-      content: 'First To do',
+      content: 'Hire The Guy That Created This App',
       completed: false
     },
     {
-      content: 'Second Todo',
+      content: 'Second To do',
       completed: true
     }
   ]

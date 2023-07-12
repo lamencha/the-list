@@ -39,13 +39,12 @@
 
 .todo-input {
 	display: block;
-	width: 100%;
-    
+    width: 100%;
 	padding: 10px 15px ;
 	appearance: none;
 	border: none;
 	background-color: #c4c1c1;
-	margin: 15px;
+	margin-top: 15px;
 	font-size: 20px;
 	outline: none;
 }
@@ -84,3 +83,15 @@ background-color: rgba(255, 255, 255, 0);
 .todo.done {
     border: 2px solid #81e7a8;
 }
+
+.frm {
+    box-sizing: border-box;
+}
+
+.frm input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+
+.frm  input.ng-valid.ng-touched {
+    background-color: #78FA89;
+  }

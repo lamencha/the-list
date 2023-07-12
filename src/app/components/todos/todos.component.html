@@ -1,20 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+
 <div class="todos">
     
-    <form name="myForm" (submit)="addTodo()" required>
+    <form novalidate class="frm" name="myForm" (submit)="addTodo()" >
         <input
             type="text"
             name="inputTodo"
             placeholder="...&#9997;"
             class="todo-input"
             [(ngModel)]="inputTodo"
-            
-            
+            ng-model="user.name"
+            required
         />
-        <input class="todo-submit" type="submit" value="Add" >
-    </form>   
+        <input class="todo-submit" type="submit"  value="Add" ng-click="update(user)">
+    </form>  
+  
     <div *ngFor="let todo of todos1; let i = index;" class="todo {{ (todo.completed ? 'done' : '') }}" (click)="toggleDone(i)">
         <div class="id">{{ i }}</div>
         <div class="content" >{{ todo.content }}</div>
         <button class="delete" (click)="deleteTodo(i)"><p>&#9940;</p></button>
-    </div>    
+    </div> 
+   
 </div>
+
+<script>
+    angular.module('formExample', [])
+      .controller('ExampleController', ['$scope', function($scope) {
+        $scope.master = {};
+  
+        $scope.update = function(user) {
+          $scope.master = angular.copy(user);
+        };
+  
+        $scope.reset = function() {
+          $scope.user = angular.copy($scope.master);
+        };
+  
+        $scope.reset();
+      }]);
+  </script>
