@@ -40,9 +40,9 @@ export class TodosComponent {
       completed: false
       
     });
-    
-  }
+    this.inputTodo = "";
 
+  }
 }
 
 
