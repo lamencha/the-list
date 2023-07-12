@@ -3,19 +3,22 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
 
-<div class="todos">
+<div class="todos" >
     
-    <form novalidate class="frm" name="myForm" (submit)="addTodo()" >
+    <form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm" class="simple-form" name="myForm" (submit)="addTodo()" ng-controller="ExampleController">
         <input
             type="text"
             name="inputTodo"
             placeholder="...&#9997;"
             class="todo-input"
             [(ngModel)]="inputTodo"
-            ng-model="user.name"
+            ng-model="user.text"
+            ng-pattern="example.inputTodo"
             required
-        />
-        <input class="todo-submit" type="submit"  value="Add" ng-click="update(user)">
+        >
+        <small *ngIf="taskForm.invalid && taskForm.dirty" id="errorMessage" class="form-text text-danger">Required
+          field</small>
+        <input  [disabled]="taskForm.invalid" class="todo-submit" type="submit" id="submit" value="ADD"  required>
     </form>  
   
     <div *ngFor="let todo of todos1; let i = index;" class="todo {{ (todo.completed ? 'done' : '') }}" (click)="toggleDone(i)">

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Todo } from './../../models/Todo'
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-todos',
@@ -34,15 +35,20 @@ export class TodosComponent {
     this.todos1 = this.todos1.filter((v, i) => i !== id);
   }
   
-  addTodo () {
+  addTodo () {    
     this.todos1.push({
       content: this.inputTodo,
       completed: false
       
     });
     this.inputTodo = "";
-
+    
   }
+  onSubmit(form: NgForm) {
+    console.log(form);
+    form.reset();
+  }
+
 }
 
 
