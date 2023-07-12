@@ -5,7 +5,7 @@
 
 <div class="todos" >
     
-    <form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm" class="simple-form" name="myForm" (submit)="addTodo()" ng-controller="ExampleController">
+    <form #taskForm="ngForm" class="simple-form" name="myForm" (submit)="addTodo(); onSubmit(taskForm); " ng-controller="ExampleController">
         <input
             type="text"
             name="inputTodo"
