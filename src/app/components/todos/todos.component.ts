@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Todo } from './../../models/Todo'
 import { NgForm } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-todos',
@@ -8,6 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./todos.component.less']
 })
 export class TodosComponent {
+  
   todos:Todo[] | undefined;
 
   inputTodo:string =""
@@ -22,6 +24,8 @@ export class TodosComponent {
       completed: true
     }
   ]
+  data: any;
+  
 
   toggleDone (id:number) {
     this.todos1.map((v, i) => {
@@ -48,6 +52,33 @@ export class TodosComponent {
     console.log(form);
     form.reset();
   }
+public getJsonValue: any;
+getJsonValue$: any;
+constructor(private http: HttpClient) {
+
+}
+
+ngOnInit(): void {
+ this.getMethod();
+ 
+}
+
+httpOptions = {
+  headers: new HttpHeaders({
+    'Content-type': 'application/json',
+    'X-Api-Key': 'c/XqJges1/7MoqOf1YUJzw==o43291n0i9SyleXX'
+  })
+}
+
+public getMethod() {
+  this.http.get('https://api.api-ninjas.com/v1/quotes?category=success',{headers: this.httpOptions.headers}).subscribe((data) => {
+    console.log(data);
+    this.getJsonValue = data;
+    
+  });
+
+
+}
 
 }
 

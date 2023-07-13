@@ -2,6 +2,12 @@
 <html>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+<!--<p> {{getJsonValue | json }} </p>-->
+
+<div *ngFor="let getJsonValue of getJsonValue">
+  <p>{{getJsonValue.quote}}</p>
+  <p>- {{getJsonValue.author}}</p>
+</div>
 
 <div class="todos" >
     
@@ -15,7 +21,7 @@
             ng-model="user.text"
             required
         >
-        <small *ngIf="taskForm.invalid && taskForm.dirty" id="errorMessage" class="form-text text-danger">Filed Is Blank.</small>
+        <small *ngIf="taskForm.invalid && taskForm.dirty" id="errorMessage" class="form-text text-danger">Field Is Blank.</small>
         <input  [disabled]="taskForm.invalid" class="todo-submit" type="submit" id="submit" value="ADD"  required>
     </form>  
   
@@ -43,3 +49,4 @@
         $scope.reset();
       }]);
   </script>
+</html>
