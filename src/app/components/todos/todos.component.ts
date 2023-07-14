@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Todo } from './../../models/Todo'
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { take } from 'rxjs/internal/operators/take';
 
 @Component({
   selector: 'app-todos',
@@ -53,7 +54,7 @@ export class TodosComponent {
     form.reset();
   }
 public getJsonValue: any;
-getJsonValue$: any;
+
 constructor(private http: HttpClient) {
 
 }
@@ -71,13 +72,16 @@ httpOptions = {
 }
 
 public getMethod() {
-  this.http.get('https://api.api-ninjas.com/v1/quotes?category=success',{headers: this.httpOptions.headers}).subscribe((data) => {
+  this.http.get('https://api.api-ninjas.com/v1/quotes?category=success',{headers: this.httpOptions.headers}).pipe(take(1)).subscribe((data) => {
     console.log(data);
     this.getJsonValue = data;
     
   });
 
+}
 
+ngOnDestroy(){
+  this.getJsonValue.unsubscribe();
 }
 
 }
